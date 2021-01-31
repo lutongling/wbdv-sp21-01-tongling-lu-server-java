@@ -1,0 +1,96 @@
+.wbdv-sticky-top {
+    position: fixed;
+    width: 100%;
+    background-color: cadetblue;
+    z-index: 1;
+}
+
+.wbdv-padding-5px {
+    padding: 5px;
+}
+
+.wbdv-margin-top-60px {
+    margin-top: 60px;
+}
+
+.wbdv-margin-top-5px {
+margin-top: 5px;
+}
+
+.wbdv-margin-right-10px {
+    margin-right: 10px;
+}
+
+.wbdv-margin-left-10px {
+    margin-left: 10px;
+}
+
+.color-white {
+    color: white;
+}
+
+.color-cadetblue {
+    color: cadetblue;
+}
+
+.color-dgblue {
+    color: dodgerblue;
+}
+
+.color-idred {
+    color: indianred;
+}
+
+.color-gray {
+    color: dimgray;
+}
+
+.color-dkgray {
+    color: darkgray;
+}
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+.background-color-lsblue {
+    background-color: lightsteelblue;
+}
+
+.background-color-gray {
+    background-color: #E5FFFF;
+}
+
+.divider {
+    border-bottom: 3px solid cadetblue;
+}
+
+/*This class is used to design the position of bottom-right fixed Plus button*/
+.wbdv-icon-fixed{
+    position: fixed;
+    bottom:0;
+    right:0;
+}
+
+/*Citation*/
+/*wbdv-hide-sm-screen is applied to hide some elements when screen size gets smaller.
+  Changed the name from #mySlider to wbdv-hide-sm-screen to satisfy course requirements.
+  Changed the max-width from 640px to 1080px so that it can test on iphone(smaller screens)*/
+/*https://stackoverflow.com/questions/17762354/remove-element-for-certain-screen-sizes/17762393*/
+.wbdv-hide-sm-screen{
+    display: block;
+}
+
+@media (max-width: 1080px)
+{
+    .wbdv-hide-sm-screen
+    {
+        display: none;
+    }
+}
+
+div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
