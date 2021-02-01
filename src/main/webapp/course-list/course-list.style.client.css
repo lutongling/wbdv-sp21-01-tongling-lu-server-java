@@ -72,6 +72,12 @@ margin-top: 5px;
     right:0;
 }
 
+/*This class is used to force some icons/elements at right when screen size changes*/
+.container .wbdv-force-right {
+    position: absolute;
+    right: 15%;
+}
+
 /*Citation*/
 /*wbdv-hide-sm-screen is applied to hide some elements when screen size gets smaller.
   Changed the name from #mySlider to wbdv-hide-sm-screen to satisfy course requirements.
