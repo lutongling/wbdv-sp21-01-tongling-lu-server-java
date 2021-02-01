@@ -1,0 +1,67 @@
+.wbdv-sticky-top {
+    position: fixed;
+    width: 100%;
+    background-color: dimgray;
+    z-index: 1;
+}
+
+.wbdv-padding-5px {
+    padding: 5px;
+}
+
+.wbdv-margin-top-60px {
+    margin-top: 60px;
+}
+
+.wbdv-margin-top-5px {
+    margin-top: 5px;
+}
+
+.wbdv-margin-right-10px {
+    margin-right: 10px;
+}
+
+.wbdv-margin-left-10px {
+    margin-left: 10px;
+}
+
+.wbdv-margin-left-20px {
+    margin-left: 20px;
+}
+
+.wbdv-margin-left-35px {
+    margin-left: 35px;
+}
+
+.color-lgray {
+    color: lightgray;
+}
+
+.color-white {
+    color: white;
+}
+
+.background-color-white {
+    background-color: white;
+}
+
+.background-color-dgray {
+    background-color: dimgray;
+}
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+/*Apply to navbar to make border line invisible*/
+.wbdv-nav-noborder {
+    border: none;
+}
+
+body {
+    background-color: #363433;
+}

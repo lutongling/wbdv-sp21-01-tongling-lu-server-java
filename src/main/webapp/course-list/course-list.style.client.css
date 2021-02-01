@@ -57,7 +57,7 @@ margin-top: 5px;
     background-color: lightsteelblue;
 }
 
-.background-color-gray {
+.background-color-lblue {
     background-color: #E5FFFF;
 }
 
@@ -89,6 +89,7 @@ margin-top: 5px;
     }
 }
 
+/*Overflow text control: be ellipsis*/
 div {
     white-space: nowrap;
     text-overflow: ellipsis;
