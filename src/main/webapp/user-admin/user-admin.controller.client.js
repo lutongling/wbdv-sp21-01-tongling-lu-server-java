@@ -1,23 +1,75 @@
-(function() {
-    const users = [
-        {id: 123, username: 'tlee', firstName: 'Tim', lastName: 'Birns Lee', role: 'FACULTY'},
-        {id: 234, username: 'alovelace', firstName: 'Ada', lastName: 'Lovelace', role: 'FACULTY'},
-        {id: 345, username: 'cgarcia', firstName: 'Charlie', lastName: 'Garcia', role: 'FACULTY'},
-        {id: 456, username: 'dcraig', firstName: 'Dan', lastName: 'Craig', role: 'FACULTY'},
-        {id: 567, username: 'sbolivar', firstName: 'Simon', lastName: 'Bolivar', role: 'FACULTY'}
-    ];
+var $rowTemplate;
+var $usernameFld;
+var $passwordFld;
+var $firstNameFld;
+var $lastNameFld;
+var $roleFld;
+var $createBtn;
 
-    var rowTemplate = jQuery('.wbdv-template');
-    var tbody = jQuery('tbody');
+var users = [];
 
-    for(var i in users) {
-        const user = users[i];
-        const rowClone = rowTemplate.clone();
-        rowClone.find('.wbdv-username').html(user.username);
-        rowClone.find('.wbdv-first-name').html(user.firstName);
-        rowClone.find('.wbdv-last-name').html(user.lastName);
-        rowClone.find('.wbdv-role').html(user.role);
-        tbody.append(rowClone);
+function renderUsers(users) {
+    $rowTemplate.empty();
+    for (var i = 0; i < users.length; i++) {
+        var user = users[i];
+        $rowTemplate
+            .prepend(`
+            <tr>
+                <td>${user.username}</td>
+                <td>${user.password}</td>
+                <td>${user.firstName}</td>
+                <td>${user.lastName}</td>
+                <td>${user.role}</td>
+                <td>
+                    <button id="${i}" class="fa-2x fa fa-times wbdv-remove"></button>
+                    <button class="fa-2x fa fa-pencil wbdv-edit"></button>
+                </td>
+            </tr>`)
     }
 
-})();
+    $(".wbdv-remove").click(deleteUser)
+}
+
+
+function createUser(user) {
+    users.push(user);
+    renderUsers(users);
+}
+
+function deleteUser(event) {
+    var button = $(event.target);
+    var id = button.attr("id");
+    users.splice(id, 1);
+    renderUsers(users);
+}
+
+function main() {
+    $rowTemplate = $(".wbdv-tbody");
+    $usernameFld = $("#usernameFld");
+    $passwordFld = $("#passwordFld");
+    $firstNameFld = $("#firstNameFld");
+    $lastNameFld = $("#lastNameFld");
+    $roleFld = $("#roleFld");
+    $createBtn = $(".wbdv-create");
+
+    $createBtn.click(function() {
+        createUser({
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            role: $roleFld.val()
+        });
+
+        // clear the input field box after creating
+        $usernameFld.val("");
+        $passwordFld.val("");
+        $firstNameFld.val("");
+        $lastNameFld.val("");
+        $roleFld.val("");
+    });
+
+}
+
+// wait the whole DOM has loaded, then invoke this function
+jQuery(main);
