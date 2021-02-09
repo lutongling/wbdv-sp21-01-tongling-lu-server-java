@@ -1,17 +1,28 @@
+// the variable to store the array of table to be rendered
 var $rowTemplate;
+
+// the variable to store the input fields
 var $usernameFld;
 var $passwordFld;
 var $firstNameFld;
 var $lastNameFld;
 var $roleFld;
 
+// the variable to store the buttons
 var $createBtn;
 var $updateBtn;
 
+// the object to connect to the server
 var userService = new AdminUserServiceClient();
 
+// the local empty array to connect to the "actual users" from the remote server
 var users = [];
 
+/*
+Create user.
+Get input field value from the browser and then store to the remote server.
+Clear the input field after creation.
+ */
 function createUser() {
     var newUser = {
         username: $usernameFld.val(),
@@ -30,9 +41,14 @@ function createUser() {
     clearFld();
 }
 
+/*
+Delete user.
+Connect to the current browser data with remote server data using the unique _id.
+Remove from both browser rendering and remote server data base.
+ */
 function deleteUser(event) {
-    var button = $(event.target);
-    var index = button.attr("id");
+    var deleteBtn = $(event.target);
+    var index = deleteBtn.attr("id");
     var id = users[index]._id;
 
     userService.deleteUser(id)
@@ -42,8 +58,13 @@ function deleteUser(event) {
         })
 }
 
+// the variable to store the selected user
 var selectedUser = null;
 
+/*
+Select user.
+Select user and let the fields be shown in the input field boxes. (connecting via _id)
+ */
 function selectUser(event) {
     var selectBtn = $(event.target);
     var id = selectBtn.attr("id");
@@ -57,6 +78,12 @@ function selectUser(event) {
     $roleFld.val(selectedUser.role);
 }
 
+/*
+Update user.
+Update user fields information by retrieving data from the field input boxes,
+and send it to the remote server database.
+Clear the input field after updating.
+ */
 function updateUser() {
     selectedUser.username = $usernameFld.val();
     selectedUser.password = $passwordFld.val();
@@ -74,6 +101,11 @@ function updateUser() {
     clearFld();
 }
 
+/*
+Render user.
+Use a for loop to render multiple columns for multiple users.
+The buttons binding to delete and select are also implemented here as the last column of the row.
+ */
 function renderUsers(users) {
     $rowTemplate.empty();
     for (var i = 0; i < users.length; i++) {
@@ -82,7 +114,7 @@ function renderUsers(users) {
             .prepend(`
             <tr>
                 <td>${user.username}</td>
-                <td>${user.password}</td>
+                <td>${`*****`}</td>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
                 <td>${user.role}</td>
@@ -98,7 +130,7 @@ function renderUsers(users) {
 }
 
 /*
-A helper method to clear the input field box to default settings
+A helper method to clear the input field box to default settings.
  */
 function clearFld() {
     $usernameFld.val(defaultStatus);
@@ -108,6 +140,10 @@ function clearFld() {
     $roleFld.val(defaultStatus);
 }
 
+/*
+main function.
+To wait until the whole DOM has loaded, then invoke this function.
+ */
 function main() {
     $rowTemplate = $(".wbdv-tbody");
 
@@ -130,5 +166,4 @@ function main() {
         });
 }
 
-// wait the whole DOM has loaded, then invoke this function
 $(main);
