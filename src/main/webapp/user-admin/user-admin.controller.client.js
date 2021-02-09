@@ -75,12 +75,23 @@ function createUser() {
         .then(function (actualUser) {
             users.push(actualUser);
             renderUsers(users);
-        })
+        });
+
+    clearFld();
 }
 
+/*
+A helper method to clear the input field box to default settings
+ */
+function clearFld() {
+    $usernameFld.val(defaultStatus);
+    $passwordFld.val(defaultStatus);
+    $firstNameFld.val(defaultStatus);
+    $lastNameFld.val(defaultStatus);
+    $roleFld.val(defaultStatus);
+}
 
 function updateCourse() {
-    // console.log(selectedUser);
     selectedUser.username = $usernameFld.val();
     selectedUser.password = $passwordFld.val();
     selectedUser.firstName = $firstNameFld.val();
@@ -92,7 +103,9 @@ function updateCourse() {
             var index = users.findIndex(user => user._id === selectedUser._id);
             users[index] = selectedUser;
             renderUsers(users);
-        })
+        });
+
+    clearFld();
 }
 
 function main() {

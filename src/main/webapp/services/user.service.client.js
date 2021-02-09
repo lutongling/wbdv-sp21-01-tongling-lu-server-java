@@ -1,6 +1,3 @@
-/*
-Old-school/Fading-away approach for creating a class in javascript
- */
 function AdminUserServiceClient() {
     this.createUser = createUser;
     this.findAllUsers = findAllUsers;
