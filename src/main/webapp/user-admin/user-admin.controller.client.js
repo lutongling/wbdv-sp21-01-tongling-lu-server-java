@@ -12,6 +12,68 @@ var userService = new AdminUserServiceClient();
 
 var users = [];
 
+function createUser() {
+    var newUser = {
+        username: $usernameFld.val(),
+        password: $passwordFld.val(),
+        firstName: $firstNameFld.val(),
+        lastName: $lastNameFld.val(),
+        role: $roleFld.val()
+    };
+
+    userService.createUser(newUser)
+        .then(function (actualUser) {
+            users.push(actualUser);
+            renderUsers(users);
+        });
+
+    clearFld();
+}
+
+function deleteUser(event) {
+    var button = $(event.target);
+    var index = button.attr("id");
+    var id = users[index]._id;
+
+    userService.deleteUser(id)
+        .then(function (status) {
+            users.splice(index, 1);
+            renderUsers(users);
+        })
+}
+
+var selectedUser = null;
+
+function selectUser(event) {
+    var selectBtn = $(event.target);
+    var id = selectBtn.attr("id");
+
+    selectedUser = users.find(user => user._id === id);
+
+    $usernameFld.val(selectedUser.username);
+    $passwordFld.val(selectedUser.password);
+    $firstNameFld.val(selectedUser.firstName);
+    $lastNameFld.val(selectedUser.lastName);
+    $roleFld.val(selectedUser.role);
+}
+
+function updateUser() {
+    selectedUser.username = $usernameFld.val();
+    selectedUser.password = $passwordFld.val();
+    selectedUser.firstName = $firstNameFld.val();
+    selectedUser.lastName = $lastNameFld.val();
+    selectedUser.role = $roleFld.val();
+
+    userService.updateUser(selectedUser._id, selectedUser)
+        .then(function (status) {
+            var index = users.findIndex(user => user._id === selectedUser._id);
+            users[index] = selectedUser;
+            renderUsers(users);
+        });
+
+    clearFld();
+}
+
 function renderUsers(users) {
     $rowTemplate.empty();
     for (var i = 0; i < users.length; i++) {
@@ -35,51 +97,6 @@ function renderUsers(users) {
     $(".wbdv-edit").click(selectUser);
 }
 
-var selectedUser = null;
-
-function selectUser(event) {
-    var selectBtn = $(event.target);
-    var id = selectBtn.attr("id");
-
-    selectedUser = users.find(user => user._id === id);
-
-    $usernameFld.val(selectedUser.username);
-    $passwordFld.val(selectedUser.password);
-    $firstNameFld.val(selectedUser.firstName);
-    $lastNameFld.val(selectedUser.lastName);
-    $roleFld.val(selectedUser.role);
-}
-
-function deleteUser(event) {
-    var button = $(event.target);
-    var index = button.attr("id");
-    var id = users[index]._id;
-
-    userService.deleteUser(id)
-        .then(function (status) {
-            users.splice(index, 1);
-            renderUsers(users);
-        })
-}
-
-function createUser() {
-    var newUser = {
-        username: $usernameFld.val(),
-        password: $passwordFld.val(),
-        firstName: $firstNameFld.val(),
-        lastName: $lastNameFld.val(),
-        role: $roleFld.val()
-    };
-
-    userService.createUser(newUser)
-        .then(function (actualUser) {
-            users.push(actualUser);
-            renderUsers(users);
-        });
-
-    clearFld();
-}
-
 /*
 A helper method to clear the input field box to default settings
  */
@@ -89,23 +106,6 @@ function clearFld() {
     $firstNameFld.val(defaultStatus);
     $lastNameFld.val(defaultStatus);
     $roleFld.val(defaultStatus);
-}
-
-function updateCourse() {
-    selectedUser.username = $usernameFld.val();
-    selectedUser.password = $passwordFld.val();
-    selectedUser.firstName = $firstNameFld.val();
-    selectedUser.lastName = $lastNameFld.val();
-    selectedUser.role = $roleFld.val();
-
-    userService.updateUser(selectedUser._id, selectedUser)
-        .then(function (status) {
-            var index = users.findIndex(user => user._id === selectedUser._id);
-            users[index] = selectedUser;
-            renderUsers(users);
-        });
-
-    clearFld();
 }
 
 function main() {
@@ -121,7 +121,7 @@ function main() {
     $createBtn.click(createUser);
 
     $updateBtn = $(".wbdv-update");
-    $updateBtn.click(updateCourse);
+    $updateBtn.click(updateUser);
 
     userService.findAllUsers()
         .then(function (actualUserFromServer) {
