@@ -111,7 +111,7 @@ function renderUsers(users) {
     for (var i = 0; i < users.length; i++) {
         var user = users[i];
         $rowTemplate
-            .prepend(`
+            .append(`
             <tr>
                 <td>${user.username}</td>
                 <td>${`*****`}</td>
