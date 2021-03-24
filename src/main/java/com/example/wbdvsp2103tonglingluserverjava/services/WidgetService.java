@@ -16,17 +16,25 @@ This Assignment 5 is maintaining the widgets in a local memory of array list.
 public class WidgetService {
   private List<Widget> widgets = new ArrayList<Widget>();
   {
-    Widget w1 = new Widget(123l, "ABC123", "HEADING", 1, "Widgets for topic ABC123");
-    Widget w2 = new Widget(234l, "ABC123", "PARAGRAPH", 1, "Lorem Ipsum");
-    Widget w3 = new Widget(345l, "ABC234", "HEADING", 2, "Widgets for topic ABC234");
-    Widget w4 = new Widget(456l, "ABC234", "PARAGRAPH", 1, "Lorem Ipsum");
-    Widget w5 = new Widget(567l, "ABC234", "PARAGRAPH", 1, "Lorem Ipsum");
+    Widget w1 = new Widget(123l, "605b751b777d75001795d9f6", "HEADING", 1, "Widgets for topic 1");
+    Widget w2 = new Widget(234l, "605b751b777d75001795d9f6", "PARAGRAPH", 1, "Lorem Ipsum for topic 1");
+    Widget w3 = new Widget(345l, "605b7524777d75001795d9f7", "HEADING", 2, "Widgets for topic 2");
+    Widget w4 = new Widget(456l, "605b7524777d75001795d9f7", "PARAGRAPH", 1, "Lorem Ipsum for topic 2");
+    Widget w5 = new Widget(567l, "605b7524777d75001795d9f7", "PARAGRAPH", 1, "Lorem Ipsum for topic 2");
+    Widget w6 = new Widget(678l, "6047cb03f10b760017274b76", "HEADING", 1, "Widgets for topic SELECT");
+    Widget w7 = new Widget(789l, "6047cb03f10b760017274b76", "HEADING", 4, "Widgets for topic SELECT");
+    Widget w8 = new Widget(890l, "6047cd7bf10b760017274b7e", "HEADING", 3, "Widgets for topic CRUD");
+    Widget w9 = new Widget(012l, "6047cd7bf10b760017274b7e", "PARAGRAPH", 1, "Widgets for topic CRUD");
 
     widgets.add(w1);
     widgets.add(w2);
     widgets.add(w3);
     widgets.add(w4);
     widgets.add(w5);
+    widgets.add(w6);
+    widgets.add(w7);
+    widgets.add(w8);
+    widgets.add(w9);
   }
 
   public Widget createWidget(String topicId, Widget widget) {
