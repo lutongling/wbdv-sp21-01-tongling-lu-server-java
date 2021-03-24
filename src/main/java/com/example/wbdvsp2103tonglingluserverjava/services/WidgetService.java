@@ -24,7 +24,8 @@ public class WidgetService {
     Widget w6 = new Widget(678l, "6047cb03f10b760017274b76", "HEADING", 1, "Widgets for topic SELECT");
     Widget w7 = new Widget(789l, "6047cb03f10b760017274b76", "HEADING", 4, "Widgets for topic SELECT");
     Widget w8 = new Widget(890l, "6047cd7bf10b760017274b7e", "HEADING", 3, "Widgets for topic CRUD");
-    Widget w9 = new Widget(012l, "6047cd7bf10b760017274b7e", "PARAGRAPH", 1, "Widgets for topic CRUD");
+    Widget w9 = new Widget(012l, "6047cd7bf10b760017274b7e", "PARAGRAPH", 1, "Widgets for topic CRUD 1");
+    Widget w10 = new Widget(111l, "6047cd7bf10b760017274b7e", "PARAGRAPH", 1, "Widgets for topic CRUD 2");
 
     widgets.add(w1);
     widgets.add(w2);
@@ -35,6 +36,7 @@ public class WidgetService {
     widgets.add(w7);
     widgets.add(w8);
     widgets.add(w9);
+    widgets.add(w10);
   }
 
   public Widget createWidget(String topicId, Widget widget) {
