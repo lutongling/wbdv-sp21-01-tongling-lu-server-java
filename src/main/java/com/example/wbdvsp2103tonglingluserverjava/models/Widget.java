@@ -1,15 +1,29 @@
 package com.example.wbdvsp2103tonglingluserverjava.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /*
 This class represent a data model, Widget. Assignment 5 only needs the following fields.
 The widget id, the related topic id, the type, the size and the text inside.
  */
+@Entity
+@Table(name="widgets")
 public class Widget {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
   private String topicId;
   private String type;
   private Integer size;
+  private Integer width;
+  private Integer height;
   private String text;
+  private String name;
 
   public Widget(Long id, String topicId, String type, Integer size, String text) {
     this.id = id;
@@ -61,4 +75,30 @@ public class Widget {
   public void setText(String text) {
     this.text = text;
   }
+
+  public Integer getWidth() {
+    return width;
+  }
+
+  public void setWidth(Integer width) {
+    this.width = width;
+  }
+
+  public Integer getHeight() {
+    return height;
+  }
+
+  public void setHeight(Integer height) {
+    this.height = height;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
 }
