@@ -24,13 +24,21 @@ public class Widget {
   private Integer height;
   private String text;
   private String name;
+  private Boolean ordered;
+  private String src;
 
-  public Widget(Long id, String topicId, String type, Integer size, String text) {
+  public Widget(Long id, String topicId, String type, Integer size, Integer width, Integer height,
+                String text, String name, Boolean ordered, String src) {
     this.id = id;
     this.topicId = topicId;
     this.type = type;
     this.size = size;
+    this.width = width;
+    this.height = height;
     this.text = text;
+    this.name = name;
+    this.ordered = ordered;
+    this.src = src;
   }
 
   public Widget() {
@@ -100,5 +108,20 @@ public class Widget {
     this.name = name;
   }
 
+  public Boolean isOrdered() {
+    return ordered;
+  }
+
+  public void setOrdered(Boolean ordered) {
+    this.ordered = ordered;
+  }
+
+  public String getSrc() {
+    return src;
+  }
+
+  public void setSrc(String src) {
+    this.src = src;
+  }
 
 }

@@ -42,9 +42,28 @@ public class WidgetService {
 
   public Integer updateWidget(Long id, Widget widget) {
     Widget originalWidget = findWidgetById(id);
-    originalWidget.setText(widget.getText());
-    originalWidget.setType(widget.getType());
-    originalWidget.setSize(widget.getSize());
+
+    if (widget.getText() != null) {
+      originalWidget.setText(widget.getText());
+    }
+    if (widget.getType() != null) {
+      originalWidget.setType(widget.getType());
+    }
+    if (widget.getSize() != null) {
+      originalWidget.setSize(widget.getSize());
+    }
+    if (widget.getWidth() != null) {
+      originalWidget.setWidth(widget.getWidth());
+    }
+    if (widget.getHeight() != null) {
+      originalWidget.setHeight(widget.getHeight());
+    }
+    if (widget.getSrc() != null) {
+      originalWidget.setSrc(widget.getSrc());
+    }
+    if (widget.isOrdered() != null) {
+      originalWidget.setOrdered(widget.isOrdered());
+    }
 
     repository.save(originalWidget);
     return 1;
