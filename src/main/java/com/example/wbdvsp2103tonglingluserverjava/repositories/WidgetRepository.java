@@ -8,6 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/*
+This interface extends CRUD repo for implementing RESTful Services in WidgetService.
+ */
 public interface WidgetRepository extends CrudRepository<Widget, Long> {
   @Query(value="SELECT * FROM widgets WHERE topic_id=:tid", nativeQuery = true)
   List<Widget> findWidgetsForTopic(@Param("tid") String topicId);
