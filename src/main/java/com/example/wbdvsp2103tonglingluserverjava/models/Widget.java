@@ -7,8 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /*
-This class represent a data model, Widget. Assignment 5 only needs the following fields.
-The widget id, the related topic id, the type, the size and the text inside.
+This class represent a data model, Widget.
+The widget id, the related topic id, the type, the size, the width, the height, the text, the name,
+the ordered storing the state whether ordered or not, and the src for urls.
  */
 @Entity
 @Table(name="widgets")

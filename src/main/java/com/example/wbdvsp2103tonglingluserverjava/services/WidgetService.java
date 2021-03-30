@@ -10,7 +10,7 @@ import java.util.List;
 
 /*
 This class represents a service class that manipulates a list of widgets instances.
-This Assignment 5 is maintaining the widgets in a local memory of array list.
+The instances are stored in the database.
  */
 @Service
 public class WidgetService {
